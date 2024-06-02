@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
+
+import Navbar from './components/navbar';
+import BakingOrdersList from './components/baking-orders-list';
+import EditOrder from './components/edit-order';
+import CreateOrder from './components/create-order';
+import AddCustomer from './components/add-customer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <Router>
+    <div className="app-style">
+    {/* <div className = "container"> */}
+      {/* <div> this is the home page </div> */}
+    <Navbar />
+      
+      <Routes>
+        <Route path = "/" element = {<BakingOrdersList/>} />
+        <Route path = "/edit/:id" element = {<EditOrder/>} /> 
+        <Route path="/create" element={<CreateOrder/>} />
+        <Route path="/customer" element={<AddCustomer/>} /> 
+      </Routes>  
+      </div>
+    {/* </div> */}
+  </Router>
   );
 }
 
